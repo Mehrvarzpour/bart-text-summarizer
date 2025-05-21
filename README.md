@@ -19,9 +19,9 @@ Output summary: customizable (length, beam search, etc.)
 You can run this in Google Colab or locally with Python 3.7+.
 
 Install dependencies:
-
+```
 pip install transformers torch
-
+```
 🧾 How to Use
 Just run the script, replace the text variable with your own content, and get the summary printed in the console.
 
