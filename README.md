@@ -1,45 +1,45 @@
 # bart-text-summarizer
 Text Summarizer with BART (facebook/bart-large-cnn)
 
-Perfect for:
-- Summarizing articles or blog posts
-- Understanding large texts quickly
-- NLP beginners experimenting with transformers
+# 🧠 Text Summarization with BART
 
-🧠 Model Info
-This project uses the facebook/bart-large-cnn model, which is pre-trained for summarization tasks and widely used in real-world applications.
+This is a simple Python-based text summarization tool using the `facebook/bart-large-cnn` model from HuggingFace Transformers. It takes any long piece of English text and returns a concise summary.
 
-Architecture: BART (Bidirectional and Auto-Regressive Transformers)
+## 🚀 Features
 
-Max input length: 1024 tokens
+- Built using PyTorch and HuggingFace Transformers
+- Accepts user input via terminal or notebook
+- Returns short, readable summaries from long texts
+- Perfect for news articles, essays, or long-form writing
 
-Output summary: customizable (length, beam search, etc.)
+## 📦 Requirements
 
-📦 Installation
-You can run this in Google Colab or locally with Python 3.7+.
+- Python 3.7+
+- torch
+- transformers
 
-Install dependencies:
+You can install the dependencies with:
+
+```bash
+pip install torch transformers
 ```
-pip install transformers torch
+🛠️ How to Run
+1. Clone the repository or copy the script.
+2. Run the Python file in your terminal, VS Code, or Jupyter environment:
+```bash
+python summarize.py
 ```
-🧾 How to Use
-Just run the script, replace the text variable with your own content, and get the summary printed in the console.
+3. You'll be prompted to enter the text you'd like to summarize.
+4. After a few seconds, the script will return a summary.
 
-Example snippet:
-from transformers import BartTokenizer, BartForConditionalGeneration
+🌐 Deployment Options
+✅ Local execution (CLI or Jupyter)
 
-tokenizer = BartTokenizer.from_pretrained("facebook/bart-large-cnn")
-model = BartForConditionalGeneration.from_pretrained("facebook/bart-large-cnn")
+🖥️ Optional: can be extended to use Streamlit or Gradio for a web UI
 
-inputs = tokenizer([your_text], max_length=1024, return_tensors='pt', truncation=True)
-summary_ids = model.generate(inputs["input_ids"], max_length=100, min_length=30, num_beams=4, length_penalty=2.0, early_stopping=True)
-print(tokenizer.decode(summary_ids[0], skip_special_tokens=True))
+☁️ Can be deployed to your own server or as a GitHub-hosted project
 
-🛠️ Customize
-max_length: controls how long the summary can be
+📌 Notes
+This model has a max input token limit (1024). Long texts will be truncated.
 
-min_length: ensures the summary isn’t too short
-
-num_beams: adjusts quality/speed trade-off in generation
-
-length_penalty: higher = more concise
+Summarization is extractive + abstractive based on beam search for better coherence.
